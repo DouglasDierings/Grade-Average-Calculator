@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class interfaceProgram extends javax.swing.JFrame {
 
-    int selecionado = 0;
+    int selected = 0;
     int n;
     DefaultListModel listaFaceW = new DefaultListModel();
     DefaultListModel listaFaceG = new DefaultListModel();
