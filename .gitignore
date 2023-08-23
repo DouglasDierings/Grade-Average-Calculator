@@ -4,3 +4,8 @@
 /build.xml
 /nbproject/project.properties
 /build/
+/gradesInterface/build/
+/gradesInterface/dist/
+/gradesInterface/nbproject/private/
+/dist/
+/nbproject/private/
