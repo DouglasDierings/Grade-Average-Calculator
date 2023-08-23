@@ -13,20 +13,19 @@ import javax.swing.JOptionPane;
  * @author dougl
  */
 public class interfaceProgram extends javax.swing.JFrame {
-    //Create variables and objects
 
-    DefaultListModel listFaceW = new DefaultListModel();
-    DefaultListModel listFaceG = new DefaultListModel();
-    DefaultListModel listResult = new DefaultListModel();
-    ArrayList<Double> listWeight = new ArrayList<>();
-    ArrayList<Double> listGrades = new ArrayList<>();
+    int selecionado = 0;
+    int n;
+    DefaultListModel listaFaceW = new DefaultListModel();
+    DefaultListModel listaFaceG = new DefaultListModel();
+    DefaultListModel listaResult = new DefaultListModel();
+    ArrayList<Double> listaWeight = new ArrayList<>();
+    ArrayList<Double> listaGrades = new ArrayList<>();
     ArrayList<Double> result = new ArrayList<>();
     double total = 0;
     int c = 0;
-    int n;
 
     /**
-     * Shows a message to the user explaining the program
      * Creates new form interfaceProgram
      */
     public interfaceProgram() {
@@ -111,7 +110,7 @@ public class interfaceProgram extends javax.swing.JFrame {
             }
         });
 
-        lstGrades.setModel(listFaceG);
+        lstGrades.setModel(listaFaceG);
         lstGrades.setToolTipText("");
         lstGrades.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         lstGrades.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,7 +147,7 @@ public class interfaceProgram extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Enter in the fields below the weight and the grade you got, then click on add:");
 
-        lstWeight.setModel(listFaceW);
+        lstWeight.setModel(listaFaceW);
         lstWeight.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstWeightMouseClicked(evt);
@@ -198,7 +197,7 @@ public class interfaceProgram extends javax.swing.JFrame {
         txtError.setText("\"error message\"");
 
         lstResult.setBackground(new java.awt.Color(153, 255, 255));
-        lstResult.setModel(listResult);
+        lstResult.setModel(listaResult);
         jScrollPane3.setViewportView(lstResult);
 
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -333,6 +332,7 @@ public class interfaceProgram extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
         try {
             txtError.hide();
             if (Double.parseDouble(txtValueW.getText()) > 100 || Double.parseDouble(txtValueG.getText()) > 100) {
@@ -340,10 +340,10 @@ public class interfaceProgram extends javax.swing.JFrame {
                 txtError.show();
                 return;
             }
-            listWeight.add(Double.valueOf(txtValueW.getText()));
-            listFaceW.setElementAt(txtValueW.getText(), c);
-            listFaceG.setElementAt(txtValueG.getText(), c);
-            listGrades.add(Double.valueOf(txtValueG.getText()));
+            listaWeight.add(Double.valueOf(txtValueW.getText()));
+            listaFaceW.setElementAt(txtValueW.getText(), c);
+            listaFaceG.setElementAt(txtValueG.getText(), c);
+            listaGrades.add(Double.valueOf(txtValueG.getText()));
             c++;
         } catch (NumberFormatException e) {
             txtError.setText("Do not enter letters or leave any fields empty!");
@@ -364,17 +364,18 @@ public class interfaceProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_lstGradesMouseClicked
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
-        listFaceW.clear();
-        listFaceG.clear();
-        listResult.clear();
+        // TODO add your handling code here:
+        listaFaceW.clear();
+        listaFaceG.clear();
+        listaResult.clear();
         txtValueW.setText(null);
         txtValueG.setText(null);
-        listWeight.clear();
-        listGrades.clear();
+        listaWeight.clear();
+        listaGrades.clear();
         gradeResult.setText("RESULT");
         for (int o = 0; o < n; o++) {
-            listFaceW.addElement(0);
-            listFaceG.addElement(0);
+            listaFaceW.addElement(0);
+            listaFaceG.addElement(0);
         }
         btnAdd.setEnabled(true);
         c = 0;
@@ -383,13 +384,14 @@ public class interfaceProgram extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnQuantatyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuantatyActionPerformed
+        // TODO add your handling code here:
         n = Integer.parseInt(spnNum.getValue().toString());
-        listFaceW.removeAllElements();
-        listFaceG.removeAllElements();
-        listResult.removeAllElements();
+        listaFaceW.removeAllElements();
+        listaFaceG.removeAllElements();
+        listaResult.removeAllElements();
         for (int g = 0; g < n; g++) {
-            listFaceW.addElement(0);
-            listFaceG.addElement(0);
+            listaFaceW.addElement(0);
+            listaFaceG.addElement(0);
         }
         c = 0;
         btnAdd.setEnabled(true);
@@ -407,21 +409,22 @@ public class interfaceProgram extends javax.swing.JFrame {
     private void txtValueGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValueGActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValueGActionPerformed
-    //This method calculates grades
+
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
+        // TODO add your handling code here:
         for (int calc = 0; calc < n; calc++) {
-            result.add(listWeight.get(calc) * listGrades.get(calc) / 100);
+            result.add(listaWeight.get(calc) * listaGrades.get(calc) / 100);
         }
         for (double count : result) {
             total += count;
         }
         gradeResult.setText(String.format("%.2f", total) + "%");
         for (int w = 0; w < c; w++) {
-            listResult.addElement(result.get(w) + "%");
+            listaResult.addElement(result.get(w) + "%");
         }
         result.clear();
-        listWeight.clear();
-        listGrades.clear();
+        listaWeight.clear();
+        listaGrades.clear();
         total = 0;
         btnCalc.setEnabled(false);
         txtError.hide();
