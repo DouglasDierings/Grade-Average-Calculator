@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author dougl
+ * @author Douglas Vinicius Dierings
  */
 public class interfaceProgram extends javax.swing.JFrame {
 
