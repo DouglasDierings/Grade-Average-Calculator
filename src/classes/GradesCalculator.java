@@ -17,9 +17,8 @@ public class GradesCalculator {
     private ArrayList<Double> listWeight = new ArrayList<>();
     private ArrayList<Double> listGrades = new ArrayList<>();
     private ArrayList<Double> result = new ArrayList<>();
-    private int n;
 
-    public void addgradesQuantity(int quantity) {
+    public void addGradesQuantity(int quantity) {
         gradesQuantity = quantity;
     }
 
@@ -29,9 +28,27 @@ public class GradesCalculator {
     }
     
     public ArrayList calculateAverage(){
-        for (int calc = 0; calc < n; calc++) {
+        for (int calc = 0; calc < gradesQuantity; calc++) {
             result.add(listWeight.get(calc) * listGrades.get(calc) / 100);
         }
         return result;
-    }    
+    }   
+    
+    public void cleanLists(){
+        
+        
+    }
+    
+    //Getters and setters
+
+    public int getGradesQuantity() {
+        return gradesQuantity;
+    }
+
+    public void setGradesQuantity(int gradesQuantity) {
+        this.gradesQuantity = gradesQuantity;
+    }
+    
+    
+    
 }
