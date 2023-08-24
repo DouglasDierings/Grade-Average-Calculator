@@ -12,9 +12,8 @@ import javax.swing.JOptionPane;
  *
  * @author Douglas Vinicius Dierings
  */
-public class interfaceProgram extends javax.swing.JFrame {
+public class GradesAverageCalculator extends javax.swing.JFrame {
 
-    //int selecionado = 0;
     int n;
     DefaultListModel listaFaceW = new DefaultListModel();
     DefaultListModel listaFaceG = new DefaultListModel();
@@ -23,12 +22,12 @@ public class interfaceProgram extends javax.swing.JFrame {
     ArrayList<Double> listaGrades = new ArrayList<>();
     ArrayList<Double> result = new ArrayList<>();
     double total = 0;
-    int c = 0;
+    int c = 0;// Control the number of items added an the fow of the array
 
     /**
      * Creates new form interfaceProgram
      */
-    public interfaceProgram() {
+    public GradesAverageCalculator() {
         initComponents();
         btnRemove.setEnabled(false);
         btnCalc.setEnabled(false);
@@ -455,20 +454,21 @@ public class interfaceProgram extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(interfaceProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GradesAverageCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(interfaceProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GradesAverageCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(interfaceProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GradesAverageCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(interfaceProgram.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GradesAverageCalculator.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new interfaceProgram().setVisible(true);
+                new GradesAverageCalculator().setVisible(true);
             }
         });
     }
