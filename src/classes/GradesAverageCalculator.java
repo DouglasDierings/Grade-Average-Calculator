@@ -4,7 +4,6 @@
  */
 package classes;
 
-import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -20,9 +19,6 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
     DefaultListModel listFaceW = new DefaultListModel();
     DefaultListModel listFaceG = new DefaultListModel();
     DefaultListModel listResult = new DefaultListModel();
-    ArrayList<Double> listWeight = new ArrayList<>();
-    ArrayList<Double> listGrades = new ArrayList<>();
-    ArrayList<Double> result = new ArrayList<>();
     double total = 0;
     int currentGradesAdded = 0;// Control the number of items added an the fow of the array
 
@@ -204,7 +200,7 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("AVERAGE");
 
-        jLabel12.setText("Version 1.2.1");
+        jLabel12.setText("Version 1.2.2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -341,11 +337,9 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
                 txtError.show();
                 return;
             }
-            gradesCalculator.addGrade(Double.valueOf(txtValueW.getText()), Double.valueOf(txtValueG.getText()));
-            listWeight.add(Double.valueOf(txtValueW.getText()));//remove
+            gradesCalculator.addGrade(Double.parseDouble(txtValueW.getText()), Double.parseDouble(txtValueG.getText()));
             listFaceW.setElementAt(txtValueW.getText(), currentGradesAdded);
             listFaceG.setElementAt(txtValueG.getText(), currentGradesAdded);
-            listGrades.add(Double.valueOf(txtValueG.getText()));//remove
             currentGradesAdded++;
         } catch (NumberFormatException e) {
             txtError.setText("Do not enter letters or leave any fields empty!");
@@ -369,20 +363,19 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
         // TODO add your handling code here:
         listFaceW.clear();
         listFaceG.clear();
-        listResult.clear();//remove
+        listResult.clear();
         txtValueW.setText(null);
         txtValueG.setText(null);
         gradesCalculator.cleanLists();
-        listWeight.clear();//remove
-        listGrades.clear();//remove
         gradeResult.setText("RESULT");
         for (int o = 0; o < gradesCalculator.getGradesQuantity(); o++) {
             listFaceW.addElement(0);
             listFaceG.addElement(0);
         }
         btnAdd.setEnabled(true);
+        gradesCalculator.setTotal(0);
         gradesCalculator.setGradesQuantity(0);
-        currentGradesAdded = 0;//remove (maybe not)
+        currentGradesAdded = 0;
         btnCalc.setEnabled(false);
         txtError.hide();
     }//GEN-LAST:event_btnRemoveActionPerformed
@@ -390,7 +383,6 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
     private void btnQuantatyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuantatyActionPerformed
         // TODO add your handling code here:
         gradesCalculator.addGradesQuantity(Integer.parseInt(spnNum.getValue().toString()));
-        //gradesQuantity = Integer.parseInt(spnNum.getValue().toString());//remove
         listFaceW.removeAllElements();
         listFaceG.removeAllElements();
         listResult.removeAllElements();
@@ -398,6 +390,8 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
             listFaceW.addElement(0);
             listFaceG.addElement(0);
         }
+        gradesCalculator.setTotal(0);
+        listResult.clear();
         currentGradesAdded = 0;
         btnAdd.setEnabled(true);
         btnRemove.setEnabled(true);
@@ -418,19 +412,10 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         // TODO add your handling code here:
         gradesCalculator.calculateAverage();
-        for (int calc = 0; calc < gradesCalculator.getGradesQuantity(); calc++) {
-            result.add(listWeight.get(calc) * listGrades.get(calc) / 100);
-        }
-        for (double count : result) {
-            total += count;
-        }
-        gradeResult.setText(String.format("%.2f", total) + "%");
+        gradeResult.setText(String.format("%.2f", gradesCalculator.averageTotal()) + "%");
         for (int w = 0; w < currentGradesAdded; w++) {
             listResult.addElement(gradesCalculator.calculateAverage().get(w) + "%");
         }
-        result.clear();//remove (check first)
-        listWeight.clear();//remove
-        listGrades.clear();//remove
         gradesCalculator.cleanLists();
         total = 0;
         btnCalc.setEnabled(false);

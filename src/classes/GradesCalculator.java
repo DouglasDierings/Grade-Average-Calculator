@@ -15,9 +15,9 @@ public class GradesCalculator {
     //Variables and arrays
     private int gradesQuantity;
     private double total;
-    private ArrayList<Double> listWeight = new ArrayList<>();
-    private ArrayList<Double> listGrades = new ArrayList<>();
-    private ArrayList<Double> result = new ArrayList<>();
+    private final ArrayList<Double> listWeight = new ArrayList<>();
+    private final ArrayList<Double> listGrades = new ArrayList<>();
+    private final ArrayList<Double> result = new ArrayList<>();
 
     public void addGradesQuantity(int quantity) {
         gradesQuantity = quantity;
@@ -35,6 +35,14 @@ public class GradesCalculator {
         return result;
     }
 
+    public double averageTotal() {
+        for (double count : result) {
+            total += count;
+        }
+        return total;
+
+    }
+
     public void cleanLists() {
         listWeight.clear();
         listGrades.clear();
@@ -48,6 +56,14 @@ public class GradesCalculator {
 
     public void setGradesQuantity(int gradesQuantity) {
         this.gradesQuantity = gradesQuantity;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public ArrayList<Double> getResult() {
+        return result;
     }
 
 }
