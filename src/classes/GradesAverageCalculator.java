@@ -340,6 +340,7 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
             listFaceW.setElementAt(txtValueW.getText(), currentGradesAdded);
             listFaceG.setElementAt(txtValueG.getText(), currentGradesAdded);
             currentGradesAdded++;
+            btnRemove.setEnabled(true);
         } catch (NumberFormatException e) {
             txtError.setText("Do not enter letters or leave any fields empty!");
             txtError.show();
@@ -376,6 +377,7 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
         currentGradesAdded = 0;
         btnCalc.setEnabled(false);
         txtError.hide();
+        btnRemove.setEnabled(false);
     }//GEN-LAST:event_btnRemoveActionPerformed
 
     private void btnQuantatyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuantatyActionPerformed
