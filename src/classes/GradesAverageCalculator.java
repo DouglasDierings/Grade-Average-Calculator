@@ -19,7 +19,6 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
     DefaultListModel listFaceW = new DefaultListModel();
     DefaultListModel listFaceG = new DefaultListModel();
     DefaultListModel listResult = new DefaultListModel();
-    double total = 0;
     int currentGradesAdded = 0;// Control the number of items added an the fow of the array
 
     /**
@@ -374,7 +373,6 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
         }
         btnAdd.setEnabled(true);
         gradesCalculator.setTotal(0);
-        gradesCalculator.setGradesQuantity(0);
         currentGradesAdded = 0;
         btnCalc.setEnabled(false);
         txtError.hide();
@@ -417,7 +415,6 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
             listResult.addElement(gradesCalculator.calculateAverage().get(w) + "%");
         }
         gradesCalculator.cleanLists();
-        total = 0;
         btnCalc.setEnabled(false);
         txtError.hide();
     }//GEN-LAST:event_btnCalcActionPerformed
