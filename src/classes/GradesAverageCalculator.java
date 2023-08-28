@@ -199,7 +199,7 @@ public class GradesAverageCalculator extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("AVERAGE");
 
-        jLabel12.setText("Version 1.2.2");
+        jLabel12.setText("Version 1.2.4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
